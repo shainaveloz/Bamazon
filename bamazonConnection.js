@@ -25,19 +25,19 @@ connection.query('SELECT * FROM Products', function(err, res){
 var inquirer = require('inquirer');
 connection.query('SELECT * FROM Products', function(err,res){
             for(var i=0; i<res.length; i++){
-                    var goods = res[i].ProductName}});
+                    var goods = res[i].ItemID}});
 
 inquirer.prompt([
 {
-    type: "input",
+    type: "list",
     name: "input",
-    message: "What is the ID of the product you would like to buy today?"
-},
-
+    message: "What is the ID of the product you would like to buy today?",
+    choices: "[goods]"
+}
 ]).then(function(user){
     console.log(user.input);
 
-    if (user.input == res[i].ItemID){
+    if (user.input == goods){
     	inquirer.prompt([{
     		type: 'input',
     		name: 'quantity',
